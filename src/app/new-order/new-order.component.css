@@ -1,0 +1,36 @@
+.new-order-container{
+        width: 100%;
+        padding: 20px;
+        
+}
+.first-container{
+    padding: 20px;
+    background-color: rgb(133, 132, 132);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    margin-bottom: 50px;
+}
+.new-order-heading{
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+  }
+  .form-container{
+    display: flex;
+    justify-content: center;
+  }
+  .form-content{
+    width: 500px;
+  }
+  .order-submit-container{
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+  }
+  .sucess-message{
+    color: green;
+    font-weight: bold;
+  }

@@ -1,0 +1,72 @@
+<div class="page">
+    <div class="new-order-container">
+        <div class="first-container">
+            <div class="new-order-heading"><i class="fa-solid fa-cash-register"></i> New Order</div>
+            <button type="button" class="btn btn-dark" routerLink="/order" >Back to Order Master</button>
+        </div>
+        <div class="form-container">
+            <div class="form-content">
+                <form [formGroup]="newOrderForm" (ngSubmit)="submitForm()">
+                    <!-- <div class="form-group mb-3 w-25">
+                      
+                        <input type="text" id="id" formControlName="id" placeholder="ID:  {{id}}" class="form-control" readonly>
+                        <label for="id"></label>
+                        <div *ngIf="newOrderForm.get('id')?.errors && newOrderForm.get('id')?.touched" class="text-danger">
+                          id is required
+                        </div>
+                      </div> -->
+                      
+                      <div class="form-floating mb-3">
+                        <input type="text" id="date" formControlName="date" placeholder="date" class="form-control">
+                        <label for="date">date</label>
+                        <div *ngIf="newOrderForm.get('date')?.errors && newOrderForm.get('date')?.touched" class="text-danger">
+                          Invalid date format (dd/mm/yyyy)
+                        </div>
+                      </div>
+                    <div class="form-floating mb-3">
+                      
+                      <input type="text" id="name" formControlName="name" placeholder="Name" class="form-control">
+                      <label for="name">Name</label>
+                      <div *ngIf="newOrderForm.get('name')?.errors && newOrderForm.get('name')?.touched" class="text-danger">
+                        Name is required
+                      </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="text" id="mobile" formControlName="mobile" placeholder="Mobile Number" class="form-control">
+                      <label for="mobile">Mobile Number</label>
+                      <div *ngIf="newOrderForm.get('mobile')?.errors && newOrderForm.get('mobile')?.touched" class="text-danger">
+                        Mobile number is required
+                      </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="text" id="status" formControlName="status" placeholder="Status" class="form-control">
+                      <label for="status">Status</label>
+                      <div *ngIf="newOrderForm.get('status')?.errors && newOrderForm.get('status')?.touched" class="text-danger">
+                        Status is required
+                      </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="text" id="amount" formControlName="amount" placeholder="Amount" class="form-control">
+                      <label for="amount">Amount</label>
+                      <div *ngIf="newOrderForm.get('amount')?.errors && newOrderForm.get('amount')?.touched" class="text-danger">
+                        Amount is required
+                      </div>
+                    </div>
+                    
+                    <div class="order-submit-container">
+                      <div>
+                        <button type="submit" class="btn btn-primary">
+                          <div *ngIf="!addingOrder">submit</div>
+                          <div *ngIf="addingOrder" class="spinner-border me-1" style="width: 1rem; height: 1rem;" role="status">
+                          </div>
+                          <span *ngIf="addingOrder">adding...</span>
+                        </button>
+                      </div>
+                      <div class="sucess-message" > {{orderSuccessMessage}}</div>
+                    </div>
+                  </form>
+            </div>
+              
+        </div>
+    </div>
+</div>

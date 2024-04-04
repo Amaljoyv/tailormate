@@ -1,0 +1,97 @@
+<div class="page">
+    <div class="order-container">
+        <div class="first-container">
+            <div class="order-master-heading"><i class="fa-solid fa-cash-register"></i> Order Master</div>
+            <div>
+                <button type="button" class="btn btn-dark me-3" routerLink="" >back to home</button>
+                <button type="button" class="btn btn-dark" routerLink="newOrder" >New Order</button>
+            </div>
+        </div>
+        <div class="second-container">
+                <div class="card">
+                    <div>
+                        <h6>Order Placed</h6>
+                        <h4>{{totalOrder}}</h4>
+                        <p>5% less than usual</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <h6>Processing</h6>
+                        <h4>{{processingCount}}</h4>
+                        <p>5% less than usual</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <h6>Manufacturing</h6>
+                        <h4>0</h4>
+                        <p>5% less than usual</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <h6>Dispatch</h6>
+                        <h4>0</h4>
+                        <p>5% less than usual</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <h6>Delivered</h6>
+                        <h4>{{deliveryCount}}</h4>
+                        <p>5% less than usual</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <h6>Total Order</h6>
+                        <h4>{{totalOrder}}</h4>
+                        <p>5% less than usual</p>
+                    </div>
+                </div>
+        </div>
+        <div class="table-container">
+            <div class="row searchBar-container  p-2">
+                <div class="col-md-4 col-xs-3"></div>
+                <div class="col-md-4 col-xs-6 searchBar ">
+                    <!-- (keyup)="search($event)" -->
+                    <input name="searchKey" [(ngModel)]="nameSearch"  type="text" class="form-control search-box"  placeholder="search with name">
+                    <input name="searchKey" [(ngModel)]="statusSearch"  type="text" class="form-control search-box"  placeholder="search with status">
+                </div>
+                <div class="col-md-4 col-xs-3"></div>
+            </div>
+            <table border="">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Date</th>
+                        <th>Name</th>
+                        <th>mobile</th>
+                        <th>Status</th>
+                        <th>amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  *ngFor="let order of allOrders | filter:nameSearch:'name' | filter:statusSearch:'status' ">
+                        <td>{{order.id}}</td>
+                        <td>{{order.date}}</td>
+                        <td>{{order.name}}</td>
+                        <td>{{order.mobile}}</td>
+                        <td>{{order.status}}</td>
+                        <td>{{order.amount}}</td>
+                        <td><button (click)="removeOrder(order.id)" class="btn btn-success"> Action</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- new order -->
+
+
+
+
