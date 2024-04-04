@@ -13,7 +13,7 @@ export class ApiService {
    return this.http.get('http://localhost:3000/get-all-orders')
   }
 
-  addOrders(id:any,date:any,name:any,mobile:any,status:any,amount:any){
+  addOrders(id:any,date:any,time:any,name:any,mobile:any,status:any,amount:any){
     const body={
       id,
       date,

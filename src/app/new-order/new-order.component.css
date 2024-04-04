@@ -23,14 +23,39 @@
     justify-content: center;
   }
   .form-content{
-    width: 500px;
+    width: 80%;
+    display: flex;
+    height: 70vh;
+    background-color: rgb(247, 242, 242);
+    box-shadow: 1px 1px 10px;
+  }
+  .submit-section{
+    position: fixed;
+    bottom: 100px;
+    left: 200px;
   }
   .order-submit-container{
     display: flex;
     align-items: center;
     column-gap: 20px;
   }
-  .sucess-message{
-    color: green;
+  .success-message{
     font-weight: bold;
   }
+  form{
+    width: 350px;
+  }
+
+  /*  */
+  .input {
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #ccc;
+    box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+    transition: 300ms ease-in-out;
+  }
+  
+  
+  /*  */

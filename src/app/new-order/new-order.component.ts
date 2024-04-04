@@ -14,6 +14,7 @@ export class NewOrderComponent implements OnInit {
   id:any
   addingOrder:boolean=false
   orderSuccessMessage:any
+  formIncompleteMessage:Boolean=false
   constructor(private fb:FormBuilder,private api:ApiService,private router:Router){}
 
  
@@ -42,6 +43,7 @@ export class NewOrderComponent implements OnInit {
 
   newOrderForm = this.fb.group({
         date: ['', Validators.required],
+        time: ['', Validators.required],
         name: ['',[Validators.required]],
         mobile: ['', [Validators.required]],
         status: ['', Validators.required],
@@ -51,6 +53,7 @@ export class NewOrderComponent implements OnInit {
   submitForm(){
     let id = this.id
     let date = this.newOrderForm.value.date
+    let time = this.newOrderForm.value.time
     let name = this.newOrderForm.value.name
     let mobile = this.newOrderForm.value.mobile
     let status = this.newOrderForm.value.status
@@ -60,27 +63,29 @@ export class NewOrderComponent implements OnInit {
     console.log(mobile);
     console.log(status);
     console.log(amount);
+    console.log(time);
+    
     
     
     if (this.newOrderForm.valid) {
-      this.api.addOrders(id,date,name,mobile,status,amount)
+      this.api.addOrders(id,date,time,name,mobile,status,amount)
       .subscribe((result:any)=>{
         this.addingOrder=true
-        
+        this.formIncompleteMessage=false
         setTimeout(() => {
           this.addingOrder=false
           this.orderSuccessMessage=result
           this.newOrderForm.reset()
         }, 3000);
+        this.orderSuccessMessage=''
         // this.router.navigateByUrl('/order')
       },(result:any)=>{
-        alert(result.error)
+        // alert(result.error)
       })
 
 
     } else {
-      alert('invalid Form')
-      this.newOrderForm.reset()
+      this.formIncompleteMessage=true
     }
   }
  
