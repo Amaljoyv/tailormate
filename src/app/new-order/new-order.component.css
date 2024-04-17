@@ -13,6 +13,15 @@
     height: 50px;
     margin-bottom: 50px;
 }
+.itemImageContainer{
+  height: 100px;
+  width: 200px;
+}
+.itemImage{
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+}
 .back-button{
   font-size: 13px;
 }

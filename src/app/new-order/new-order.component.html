@@ -84,8 +84,8 @@
                       aria-placeholder="Select Mode"
                       class="form-select input"
                     >
-                      <option value="shirt">CASH</option>
-                      <option value="pants">CREDIT</option>
+                      <option value="CASH">CASH</option>
+                      <option value="CREDIT">CREDIT</option>
                     </select>
                     <div
                       *ngIf="
@@ -162,7 +162,7 @@
                     <input
                       type="date"
                       id="date"
-                      formControlName="date"
+                      formControlName="deliveryDate"
                       placeholder="date"
                       class="form-control date-input input"
                     />
@@ -176,7 +176,7 @@
                     <input
                       type="text"
                       id="requiredDays"
-                      formControlName="quantity"
+                      formControlName="reqWorkingDays"
                       placeholder="0"
                       class="form-control reqDays-input input"
                     />
@@ -190,7 +190,7 @@
                     <input
                       type="date"
                       id="date"
-                      formControlName="date"
+                      formControlName="trialDate"
                       placeholder="date"
                       class="form-control date-input input"
                     />
@@ -312,12 +312,27 @@
                     </div>
                     
                     <br />
-                    <div class="image-input-container me-3">
-                      <label for="itemImage">select image</label><br>
-                      <input id="itemImage" type="file"  name="itemImage"  formControlName="itemImage" />
-                      <!-- (change)="onFileSelected($event)" -->
-                      <!-- <button type="submit">Submit</button> -->
+                    <div class="dropdown mb-3">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Select Image
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <button *ngFor="let image of imageOptions" class="dropdown-item" (click)="selectImage(image)">
+                          <img class="dropdown-image" [src]="image" alt="">
+                          <span class="dropdown-text">{{ image }}</span>
+                        </button>
+                      </div>
                     </div>
+                    
+                    
+                    <!-- <img class="itemImage" [src]="image" alt=""> -->
+                    <!-- <img class="itemImage" src="https://images.pexels.com/photos/6461250/pexels-photo-6461250.jpeg" alt=""> -->
+                    
+                    <!-- <div class="image-input-container me-3">
+                      <label for="itemImage">select image</label><br>
+                      <input id="itemImage" type="file"  name="itemImage"  />
+                    
+                    </div> -->
                     
                   </div>
                   <div class="table-container">

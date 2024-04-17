@@ -18,11 +18,23 @@ export class NewOrderComponent implements OnInit {
   addingOrder:boolean=false
   orderSuccessMessage:any
   formIncompleteMessage:Boolean=false
+//  image
+// Array of image options
+imageOptions: string[] = [
+  'https://images.pexels.com/photos/6461250/pexels-photo-6461250.jpeg',
+  'https://images.pexels.com/photos/6461250/pexels-photo-6461250.jpeg',
+  'https://images.pexels.com/photos/6461250/pexels-photo-6461250.jpeg'
+]; // Add your image paths here
+
+// Property to store the selected image
+selectedImage: string = '';
+
+// Function to handle image selection
+selectImage(image: string) {
+  this.selectedImage = image;
+}
 
 
-  // image work
-  imageList: string[] = [];
-  // image work
 
 
 
@@ -39,20 +51,20 @@ export class NewOrderComponent implements OnInit {
       
     // })
     this.getAllOrders()
-    this.fetchImageList()
+    // this.fetchImageList()
   }
 
   // image work
-  fetchImageList() {
+  // fetchImageList() {
     
-    this.http.get<any[]>('src/assets/images/images.json').subscribe(images => {
-      console.log(images);
+  //   this.http.get<any[]>('src/assets/images/images.json').subscribe(images => {
+  //     console.log(images);
       
-      this.imageList = images;
-      console.log(this.imageList);
+  //     this.imageList = images;
+  //     console.log(this.imageList);
       
-    });
-  }
+  //   });
+  // }
   // image work
 
     getAllOrders(){
@@ -75,13 +87,20 @@ export class NewOrderComponent implements OnInit {
   newOrderForm = this.fb.group({
         date: ['', Validators.required],
         time: ['', Validators.required],
+        paymentMode: ['', Validators.required],
         name: ['',[Validators.required,Validators.pattern('[a-zA-Z ]*')]],
         mobile: ['', [Validators.required,Validators.pattern('[0-9]*'),Validators.minLength(10),Validators.maxLength(10)]],
+
         // items: this.fb.array([]),
+        address: ['', Validators.required],
+        deliveryDate: ['', Validators.required],
+        reqWorkingDays: ['', Validators.required],
+        trialDate: ['', Validators.required],
+
         item: ['', Validators.required],
         amount: ['',[Validators.required,Validators.pattern('[0-9]*')]],
         quantity: ['',[Validators.required,Validators.pattern('[0-9]*')]],
-        // itemImage:[]
+        itemImage:[]
       });
 
       // get items(): FormArray {
@@ -95,17 +114,17 @@ export class NewOrderComponent implements OnInit {
         let item = this.newOrderForm.value.item;
         let amount = this.newOrderForm.value.amount;
         let quantity = this.newOrderForm.value.quantity;
-        console.log(item,amount,quantity);
+        // console.log(item,amount,quantity);
         
         const itemEntry = {
           item,
           amount,
           quantity
         };
-        console.log(itemEntry);
+        // console.log(itemEntry);
         
         this.itemTable.push(itemEntry); 
-        console.log(this.itemTable);
+        // console.log(this.itemTable);
         // this.newOrderForm.get('item')?.reset()
         // this.newOrderForm.get('quantity')?.reset()
         // this.newOrderForm.get('amount')?.reset()
@@ -156,20 +175,23 @@ export class NewOrderComponent implements OnInit {
     
     let date = this.newOrderForm.value.date
     let time = this.newOrderForm.value.time
+    let paymentMode = this.newOrderForm.value.paymentMode
     let name = this.newOrderForm.value.name
     let mobile = this.newOrderForm.value.mobile
+    let address = this.newOrderForm.value.address
+    let deliveryDate = this.newOrderForm.value.deliveryDate
+    let reqWorkingDays = this.newOrderForm.value.reqWorkingDays
+    let trialDate = this.newOrderForm.value.trialDate
     let items = this.itemTable.concat();
-    console.log(items);
-    
-    // let item = this.newOrderForm.value.item
-    // let amount = this.newOrderForm.value.amount
-    // let quantity = this.newOrderForm.value.quantity
+    // console.log(items);
     let orderStatus = "Order Placed"
-    console.log(date);
-    console.log(name);
-    console.log(mobile);
-    console.log(time);
-    console.log(orderStatus);
+    // console.log(date);
+    // console.log(paymentMode);
+    
+    // console.log(name);
+    // console.log(mobile);
+    // console.log(time);
+    // console.log(orderStatus);
     
     let id = localStorage.getItem('id');
     if (!id) {
@@ -181,9 +203,9 @@ export class NewOrderComponent implements OnInit {
     
     
     if (this.newOrderForm.valid) {
-      this.api.addOrders(id,date,time,name,mobile,items,orderStatus)
+      this.api.addOrders(id,date,paymentMode,time,name,mobile,address,deliveryDate,reqWorkingDays,trialDate,items,orderStatus)
       .subscribe((result:any)=>{
-        console.log(result);
+        // console.log(result);
         
         this.addingOrder=true
         this.getAllOrders()

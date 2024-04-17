@@ -17,13 +17,18 @@ export class ApiService {
     return this.http.get(`http://localhost:3000/get-one-order/${id}`)
   }
 
-  addOrders(id:any,date:any,time:any,name:any,mobile:any,items:any,orderStatus:any){
+  addOrders(id:any,date:any,paymentMode:any,time:any,name:any,mobile:any,address:any,deliveryDate:any,reqWorkingDays:any,trialDate:any,items:any,orderStatus:any){
     const body={
       id,
       date,
+      paymentMode,
       time,
       name,
       mobile,
+      address,
+      deliveryDate,
+      reqWorkingDays,
+      trialDate,
       items,
       orderStatus
     }
