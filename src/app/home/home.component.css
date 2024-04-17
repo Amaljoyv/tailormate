@@ -1,0 +1,13 @@
+
+.page{
+    
+    background-image: url('https://images.pexels.com/photos/6461250/pexels-photo-6461250.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:   0 -100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}

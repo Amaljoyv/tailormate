@@ -1,0 +1,78 @@
+.page {
+    padding: 20px;
+}
+.first-container{
+    padding: 20px;
+    background-color: gray;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+.update-order-heading{
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+  }
+.form-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+form{
+    width: 600px;
+    padding: 50px;
+}
+.order-submit-container button{
+    width: 150px;
+    padding: 5px 15px;
+  }
+  .success-message{
+    float: right;
+  }
+
+  @media (max-width:800px) {
+    .page {
+        padding: 10px;
+    }
+    .update-order-heading{
+      font-weight: bold;
+      font-size: 13px;
+      color: black;
+    }
+    .first-container button{
+      font-size: 10px;
+      padding: 1px 3px;
+
+    }
+    .new-order-container{
+        width: 100%;
+        padding: 10px;
+      }
+      form{
+        width: 100%;
+        padding: 10px;
+      }
+      form input ,form select{
+        font-size: 13px;  
+      }
+      .form-group h3{
+        font-size: 14px;
+      }
+      .total-button{
+        font-size: 12px;
+      }
+      .order-submit-container button{
+        font-size: 13px;
+      }
+      .order-submit-container button{
+        width: 130px;
+        padding: 5px 15px;
+      }
+      .success-message{
+        font-size: 12px;
+      }
+}

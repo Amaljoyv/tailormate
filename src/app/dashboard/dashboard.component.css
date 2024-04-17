@@ -1,49 +1,85 @@
 .page{
-    background-color: rgb(241, 239, 239);
-    height: 100vh;
+    
+    background-image: url('https://images.pexels.com/photos/6461250/pexels-photo-6461250.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:   0 -100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.row{
+  padding: 80px 0 0 100px;
 }
 
-.card-container{
-    width: 600px;
-    margin-top: 100px;
-    display: flex;
-    column-gap: 80px;
-    row-gap: 50px;
-    flex-wrap: wrap;
+.containerr{
+  height: 100vh;
+  backdrop-filter: brightness(50%);
 }
+.card-container{
+    width: 400px;
+    height: 600px;
+    margin-top: 100px;
+    display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 0px;
+    backdrop-filter: brightness(30%);
+}
+
 .card {
-    /* width: 190px;
-    height: 254px; */
-    width: 150px;
+    
     cursor: pointer;
     border-radius: 20px;
     border: none;
-    background: #e0e0e0;
+    backdrop-filter: grayscale(50%);
+    /* background: #e0e0e0;
     box-shadow: 15px 15px 30px #bebebe,
-               -15px -15px 30px #fdfdfd;
+               -15px -15px 30px #fdfdfd; */
   }
-  .card:hover{
-    transform: scale(1.1);
-    transition: transform 0.3s ease;
-    
-  }
+  
   .card-content{
     padding: 40px 0 20px 0;
     text-align: center;
+    color: white;
+    cursor: pointer;
+  }
+  .card-content:hover{
+    padding: 40px 0 20px 0;
+    text-align: center;
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
   }
   .card-content i{
-    font-size: 35px;
+    font-size: 40px;
     margin-bottom: 5px;
+    
   }
-
+  .card-text{
+    color: white;
+    font-size: 20px;
+    font-weight: bolder;
+  }
+ 
+  @media (max-width:1500px) {
+    .page{
+      background-position:   0 0;
+  }
+  }
   @media (max-width:800px) {
+    .row{
+      padding: 0px 0 0 0px;
+    }
+    .page{
+      background-position:  -450px -10px;
+  }
     .card-container{
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        margin-top: 50px;
-    column-gap: 50px;
-    row-gap: 30px;
+        width: 60%;
+        height: 50%;
+    }
+    .single-card-container{
+      height: 50px;
     }
     .card-content{
         padding: 30px 0 20px 0;
@@ -57,5 +93,9 @@
         /* width: 190px;
         height: 254px; */
         width: 100px;
+      }
+      .card-text{
+        font-size: 15px;
+        
       }
   }

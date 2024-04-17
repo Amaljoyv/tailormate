@@ -1,0 +1,120 @@
+<div class="page ">
+  <div class="first-container">
+    <div class="update-order-heading"><i class="fa-solid fa-cash-register"></i> Update Order</div>
+    <button type="button" class="btn btn-outline-light back-button" routerLink="/order" >Back to Order Master</button>
+</div>
+    <div class="form-container "> 
+        <form [formGroup]="newOrderForm" class="form-control " >
+            <div class="form-group  ">
+              
+                <!-- <input type="text" id="id" formControlName="id" placeholder="Order No:  {{id}}" class="form-control bg-dark text-success" readonly> -->
+                <!-- <button class="btn btn-dark mb-4">Order No:  {{id}}</button> -->
+                <h3>Edit Order Details</h3>
+                <label for="id"></label>
+                <div *ngIf="newOrderForm.get('id')?.errors && newOrderForm.get('id')?.touched" class="text-danger">
+                  id is required
+                </div>
+              </div>
+              
+              <div class="d-flex justify-content-between">
+                <div class="  mb-3">
+                  <input type="date" id="date" formControlName="date" placeholder="date" class="form-control input">
+                  <!-- <label for="date">date</label> -->
+                  <div *ngIf="newOrderForm.get('date')?.errors && newOrderForm.get('date')?.touched" class="text-danger">
+                    please select a date
+                  </div>
+                </div>
+                <div class="  mb-3">
+                  <input type="time" id="date" formControlName="time"  placeholder="time" class="form-control input">
+                  <!-- <label for="date">date</label> -->
+                  <div *ngIf="newOrderForm.get('time')?.errors && newOrderForm.get('time')?.touched" class="text-danger">
+                    please select a time
+                  </div>
+                </div>
+              </div>
+              
+            <div class="  mb-3">
+              
+              <input type="text" id="name" formControlName="name"  placeholder="Name" class="form-control input">
+              <div *ngIf="newOrderForm.get('name')?.errors && newOrderForm.get('name')?.touched" class="text-danger">
+                fill name without digits
+              </div>
+            </div>
+            <div class=" mb-3">
+              <input type="text" id="mobile" formControlName="mobile" placeholder="Mobile Number" class="form-control input">
+              <!-- <label for="mobile">Mobile Number</label> -->
+              <div *ngIf="newOrderForm.get('mobile')?.errors && newOrderForm.get('mobile')?.touched" class="text-danger">
+                fill 10 digit mobile no
+              </div>
+            </div>
+            <!-- <div class=" mb-3">
+              <select id="item" formControlName="item" aria-placeholder="Select item" class="form-select input">
+                <option value="">Select item</option>
+                <option value="shirt">shirt</option>
+                <option value="pants">pants</option>
+                <option value="t-shirt">t-shirt</option>
+                <option value="Salwar">Salwar</option>
+                <option value="kurthi">kurthi</option>
+                <option value="churidar">churidar</option>
+              </select> 
+               <div *ngIf="newOrderForm.get('item')?.errors && newOrderForm.get('item')?.touched" class="text-danger ">
+                Status is required
+              </div>
+            </div> -->
+            
+            <div class=" mb-3">
+              <select id="orderStatus" formControlName="orderStatus"  aria-placeholder="Select status" class="form-select input">
+                <option value="">Select Status</option>
+                <option value="Order Placed">Order Placed</option>
+                <option value="Delivered">Delivered</option>
+                <option value="Processing">Processing</option>
+                <option value="Manufacturing">Manufacturing</option>
+                <option value="Dispatch">Dispatch</option>
+              </select> 
+               <div *ngIf="newOrderForm.get('status')?.errors && newOrderForm.get('status')?.touched" class="text-danger ">
+                Status is required
+              </div>
+            </div>
+            
+            
+            <!-- <div class=" mb-3">
+              <input type="text" id="amount" formControlName="amount" placeholder="price" class="form-control input">
+              <div *ngIf="newOrderForm.get('amount')?.errors && newOrderForm.get('amount')?.touched" class="text-danger">
+                fill amount correctly
+              </div>
+            </div>
+            <div class=" mb-3">
+              <input type="text" id="quantity" formControlName="quantity" placeholder="Quantity" class="form-control input">
+              <div *ngIf="newOrderForm.get('quantity')?.errors && newOrderForm.get('quantity')?.touched" class="text-danger">
+                fill amount correctly
+              </div>
+            </div> -->
+            <div class="d-flex justify-content-between">
+              <div class=" w-75 ">
+                
+                <!-- <input type="text" id="id" formControlName="id" placeholder="Order No:  {{id}}" class="form-control bg-dark text-success" readonly> -->
+                <div (click)="calculateTotalAmount()" class="btn total-button btn-dark mb-2">Total Amount :{{totalAMount}}  </div>
+                <!-- {{totalAMount}} -->
+  
+                
+              </div>
+              
+              <div class="order-submit-container">
+                <div>
+                  <button (click)="submitForm()" class="btn btn-primary">
+                    <!-- *ngIf="!addingOrder" -->
+                    <div *ngIf="!updatingorder">update Order</div>
+                    <div *ngIf="updatingorder" class="spinner-border me-2 " style="width: 1rem; height: 1rem;" role="status">
+                    </div>
+                    <span *ngIf="updatingorder">updating...</span>
+                  </button>
+                </div>
+                
+              </div>
+              
+            </div>
+            <div class="success-message text-success" > {{orderSuccessMessage}}</div>
+                <div *ngIf=" !newOrderForm.valid && formIncompleteMessage" class=" text-danger">please fill all the fields</div>
+          </form> 
+    </div>
+</div>

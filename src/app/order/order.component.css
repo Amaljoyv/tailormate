@@ -1,9 +1,8 @@
-*{
+/* *{
     margin: 0;
     padding: 0;
-}
+} */
 .page{
-    background-color: white;
     
     display: flex;
     justify-content: center;
@@ -18,9 +17,10 @@
 }
 .first-container{
     padding: 20px;
-    background-color: rgb(133, 132, 132);
+    background-color:  gray;
     color: white;
     display: flex;
+    border-radius: 5px;
     justify-content: space-between;
     align-items: center;
     height: 50px;
@@ -41,13 +41,36 @@
     flex-wrap: wrap;
     column-gap: 20px;
     row-gap: 20px;
-
+    
 }
 td{
   padding: 5px;
+  letter-spacing: 1px;
+}
+.delete-confirm-modal{
+  border: none;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px;
+}
+.table-body{
+  font-size: 13px;
+}
+.action-buttons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+.table-body:hover{
+  background-color: lightgray;
+  transition: .5s ease;
 }
 .searchBar-container{
+  margin: 0;
   background-color: gray;
+  border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 .searchBar{
   display: flex;
@@ -98,16 +121,81 @@ td{
 table{
   font-weight: bold;
 }
+.delete-button{
+  font-size: 20px;
+  cursor: pointer;
+}
+.update-button{
+  font-size: 18px;
+}
+.modal-footer{
+  display: flex;
+  justify-content: space-between;
+}
 
   @media (max-width:800px) {
-    .table{
-      display: none;
+    .order-master-heading{
+      font-weight: bold;
+      font-size: 13px;
+      color: black;
+    }
+    .first-container button{
+      font-size: 10px;
+      padding: 1px 3px;
+
+    }
+    thead{
+      font-size: 9px;
+    }
+    .table-body{
+      font-size: 10px;
+    }
+    .order-container{
+      width: 100%;
+      padding: 10px;
+      
+  }
+    .action-buttons{
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .table-body i{
+      font-size: 10px;
+    }
+    td{
+      padding-top: 10px;
+      letter-spacing: 0;
     }
     .second-container{
       justify-content: center;
+      padding: 20 0;
+    }
+    .delete-confirm-modal{
+      border: none;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 10px;
+    }
+    .modal-footer{
+      display: flex;
+      justify-content: center;
+    }
+    .modal-footer button{
+      font-size: 10px;
+    }
+    .input{
+      width: 50%;
     }
     .card{
       width: 120px;
-    padding: 10px 50px 10px 15px;
+      
+    padding: 10px 20px 10px 15px;
+    }
+    .card h6{
+      font-size: 11px;
+    }
+    .card h4{
+      font-size: 13px;
     }
   }

@@ -3,95 +3,122 @@
         <div class="first-container">
             <div class="order-master-heading"><i class="fa-solid fa-cash-register"></i> Order Master</div>
             <div>
-                <button type="button" class="btn btn-dark me-3" routerLink="" >back to home</button>
-                <button type="button" class="btn btn-dark" routerLink="newOrder" >New Order</button>
+                <button type="button" class="btn btn-outline-light me-3" routerLink="/dashboard" >back to home</button>
+                <button type="button" class="btn btn-outline-light" routerLink="newOrder" >New Order</button>
             </div>
         </div>
         <div class="second-container">
                 <div class="card">
                     <div>
                         <h6>Order Placed</h6>
-                        <h4>{{totalOrder}}</h4>
-                        <p>5% less than usual</p>
+                        <h4>{{placedOrderCount}}</h4>
+                        <!-- <p>5% less than usual</p> -->
                     </div>
                 </div>
                 <div class="card">
                     <div>
                         <h6>Processing</h6>
                         <h4>{{processingCount}}</h4>
-                        <p>5% less than usual</p>
+                        <!-- <p>5% less than usual</p> -->
                     </div>
                 </div>
                 <div class="card">
                     <div>
                         <h6>Manufacturing</h6>
-                        <h4>0</h4>
-                        <p>5% less than usual</p>
+                        <h4>{{manufacturingCount}}</h4>
+                        <!-- <p>5% less than usual</p> -->
                     </div>
                 </div>
                 <div class="card">
                     <div>
                         <h6>Dispatch</h6>
-                        <h4>0</h4>
-                        <p>5% less than usual</p>
+                        <h4>{{dispatchCount}}</h4>
+                        <!-- <p>5% less than usual</p> -->
                     </div>
                 </div>
                 <div class="card">
                     <div>
                         <h6>Delivered</h6>
                         <h4>{{deliveryCount}}</h4>
-                        <p>5% less than usual</p>
+                        <!-- <p>5% less than usual</p> -->
                     </div>
                 </div>
                 <div class="card">
                     <div>
                         <h6>Total Order</h6>
                         <h4>{{totalOrder}}</h4>
-                        <p>5% less than usual</p>
+                        <!-- <p>5% less than usual</p> -->
                     </div>
                 </div>
         </div>
         <div class="table-container">
-            <div class="row searchBar-container  p-2">
+            <div class="row searchBar-container p-2">
                 <div class="col-md-4 col-xs-3"></div>
-                <div class="col-md-4 col-xs-6 searchBar ">
-                    <!-- (keyup)="search($event)" -->
-                    <input name="searchKey" [(ngModel)]="nameSearch"  type="text" class="input"  placeholder="search with name">
-                    <input name="searchKey" [(ngModel)]="statusSearch"  type="text" class="input"  placeholder="search with status">
+                <div class="col-md-4 col-xs-6 searchBar">
+                    <input name="nameSearch" [(ngModel)]="nameSearch" type="text" class="input" placeholder="search  name">
+                    <input name="statusSearch" [(ngModel)]="statusSearch" type="text" class="input" placeholder="search  status">
                 </div>
                 <div class="col-md-4 col-xs-3"></div>
             </div>
-            <table border="">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>DATE</th>
-                        <th>NAME</th>
-                        <th>MOBILE</th>
-                        <th>STATUS</th>
-                        <th>AMOUNT</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr  *ngFor="let order of allOrders | filter:nameSearch:'name' | filter:statusSearch:'status' ">
-                        <td>{{order.id}}</td>
-                        <td>{{order.date}}</td>
-                        <td>{{order.name}}</td>
-                        <td>{{order.mobile}}</td>
-                        <td>{{order.status}}</td>
-                        <td>{{order.amount}}</td>
-                        <td><button (click)="removeOrder(order.id)" class="btn btn-success"> Action</button></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="">
+                    <thead>
+                        <tr>
+                            <th>ORDER NO</th>
+                            <th>DATE</th>
+                            <th>NAME</th>
+                            <th>MOBILE</th>
+                            <!-- <th>ITEM</th>
+                            <th>QUANTITY</th>
+                            <th>PRICE</th> -->
+                            <th>TOTAL AMOUNT</th>
+                            <th>STATUS</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-body" *ngFor="let order of allOrders | filter:nameSearch:'name' | filter:statusSearch:'orderStatus'">
+                            <td>{{order.id}}</td>
+                            <td>{{order.date}}</td>
+                            <td>{{order.name}}</td>
+                            <td>{{order.mobile}}</td>
+                            <!-- <td>{{order.item}}</td>
+                            <td>{{order.quantity}}</td>
+                            <td>{{order.amount}}</td> -->
+                            <td>{{order.totalAmount}}</td>
+                            <td>{{order.orderStatus}}</td>
+                            <td class="action-buttons">
+                                <!-- <a routerLink="view-order/{{order._id}}">
+                                    <i class="fa-solid fa-eye text-success update-button"></i>
+                                </a> -->
+                                <a routerLink="update-order/{{order._id}}">
+                                    <i class="fa-solid fa-pen text-success update-button"></i>
+                                </a>
+                                <button (click)="removeOrder(order._id)" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <i class="fa-solid fa-trash text-danger delete-button"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+        
     </div>
 </div>
-
-
-
-<!-- new order -->
-
-
-
+<!-- order delete confirm modal -->
+<div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        
+        <div class="modal-footer ">
+            <div><button class="delete-confirm-modal">Are you sure you want to delete this order?</button></div>
+          <div>
+              <button type="button" (click)="delete(orderToDelete)"   class="btn btn-primary me-3" data-bs-dismiss="modal">Yes</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
