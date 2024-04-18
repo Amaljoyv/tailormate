@@ -14,7 +14,7 @@ export class NewOrderComponent implements OnInit {
   // id:any
   itemTable:any=[]
   // selectedFile!: File;
-  totalAMount:Number=0
+  totalAMount:any
   addingOrder:boolean=false
   orderSuccessMessage:any
   formIncompleteMessage:Boolean=false
@@ -130,7 +130,20 @@ selectImage(image: string) {
         // this.newOrderForm.get('amount')?.reset()
         // this.newOrderForm.get('itemImage')?.reset()
         // console.log(this.newOrderForm.value);
+
         
+       this.updateSubtotalAmount()
+      
+
+        
+      }
+
+      updateSubtotalAmount() {
+        this.totalAMount = 0;
+        for (const entry of this.itemTable) {
+          this.totalAMount += Number(entry.amount) * Number(entry.quantity);
+        }
+        console.log('Total Amount:', this.totalAMount);
       }
 
 
@@ -139,6 +152,7 @@ selectImage(image: string) {
         if (index !== -1) {
           this.itemTable.splice(index, 1);
         }
+        this.updateSubtotalAmount()
       }
 
       calculateTotalAmount() {
